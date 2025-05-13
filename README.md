@@ -32,11 +32,13 @@ Features:
 
 * End points for entities: Books, Cart, Orders
 
+* Business logic implemented
+
 * Basic Authentication
 
 * Swagger installed
 
-* Builts a fat jar (no containerization)
+* Builds a fat jar (no containerization)
 
 * Unit Tests on repositories, services and controllers
 
