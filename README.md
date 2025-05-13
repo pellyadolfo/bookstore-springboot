@@ -28,6 +28,8 @@ Features:
 
 * H2 embedded in memory Database
 
+* Preloaded sample data on startup
+
 * End points for entities: Books, Cart, Orders
 
 * Basic Authentication
