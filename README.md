@@ -21,3 +21,21 @@ To install:
 * java -jar backend-0.0.1-SNAPSHOT.jar
 
 Works together with https://github.com/pellyadolfo/bookstore-react
+
+Features:
+
+* Built on Spring Data with Hibernate
+
+* H2 embedded in memory Database
+
+* End points for entities: Books, Cart, Orders
+
+* Basic Authentication
+
+* Swagger installed
+
+* Builts a fat jar (no containerization)
+
+* Unit Tests on repositories, services and controllers
+
+* Integration Tests (excluded from builds)
