@@ -1,6 +1,6 @@
 # Bookstore SpringBoot
 
-Simple demo SpringBoot with Spring Data.
+Simple demo SpringBoot with Spring Data JPA
 
 Requirements:
 
@@ -24,7 +24,7 @@ Works together with https://github.com/pellyadolfo/bookstore-react
 
 Features:
 
-* Built on Spring Data with Hibernate
+* Built on Spring Data JPA with Hibernate
 
 * H2 embedded in memory Database
 
