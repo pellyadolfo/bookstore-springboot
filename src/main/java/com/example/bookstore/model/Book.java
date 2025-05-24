@@ -10,7 +10,6 @@ import lombok.Data;
 
 @Data
 @Entity
-@Sql(scripts = {"/import_books.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
