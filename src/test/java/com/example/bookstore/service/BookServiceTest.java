@@ -6,19 +6,19 @@ import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.example.bookstore.dto.BookDTO;
 import com.example.bookstore.model.Book;
 import com.example.bookstore.repository.BookRepository;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(SpringExtension.class)
 public class BookServiceTest {
 
    @Mock
@@ -59,14 +59,14 @@ public class BookServiceTest {
    }
    
    @Test
-   @Ignore
+   @Disabled
    public void canUpdateBookTest() {
 	   
 	   
    }
 
    @Test
-   @Ignore
+   @Disabled
    public void canDeleteBookTest() {
 	   
 	   

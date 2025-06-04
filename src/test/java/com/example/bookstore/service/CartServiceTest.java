@@ -1,53 +1,53 @@
 package com.example.bookstore.service;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.modelmapper.ModelMapper;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.example.bookstore.repository.CartRepository;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(SpringExtension.class)
 public class CartServiceTest {
 
    @Mock
    private CartRepository cartRepository;
    
-   @InjectMocks
-   CartService cartService;
+   //@InjectMocks
+   //CartService cartService;
    
    @Mock
    private ModelMapper modelMapper;
       
    @Test
-   @Ignore
+   @Disabled
    public void getCartByUserIdTest() {
 	   
    }
    
    @Test
-   @Ignore
+   @Disabled
    public void addItemToCartTest() {
 	   
    }
 
    @Test
-   @Ignore
+   @Disabled
    public void removeItemFromCartTest() {
 	   
    }
    
    @Test
-   @Ignore
+   @Disabled
    public void clearCartTest() {
 	   
    }
    
    @Test
-   @Ignore
+   @Disabled
    public void createNewCartTest() {
 	   
    }

@@ -1,23 +1,16 @@
 package com.example.bookstore.controller;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.bookstore.service.OrderService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(CartController.class)
+@WebMvcTest(OrderController.class)
+@Disabled
 public class OrderControllerTest {
-
-    @MockBean
-    OrderService orderService;
     
     ObjectMapper objectMapper = new ObjectMapper();
     
@@ -25,19 +18,19 @@ public class OrderControllerTest {
     private MockMvc mockMvc;
         
     @Test
-    @Ignore
+    @Disabled
     public void createOrderFromCartTest() {
     	
     }
     
     @Test
-    @Ignore
+    @Disabled
     public void getOrderByIdTest() {
     	
     }
     
     @Test
-    @Ignore
+    @Disabled
     public void getOrdersByUserIdTest() {
     	
     }
