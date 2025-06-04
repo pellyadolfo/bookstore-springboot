@@ -21,73 +21,73 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class SecurityConfig {
 	
-    private final MyUserDetailService myUserDetailService;
+	private final MyUserDetailService myUserDetailService;
 
-    public SecurityConfig(MyUserDetailService myUserDetailService) {
-        this.myUserDetailService = myUserDetailService;
-    }
-    
-    @Bean
-    public UserDetailsService userDetailService() {
-        return myUserDetailService;
-    }
-    
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-        
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    	
-        http
-        	.csrf().disable()
-        	.cors(cors -> cors.configurationSource(corsConfigurationSource()))
-        	.authorizeHttpRequests((authz) -> authz
-        			.requestMatchers("/swagger-ui/**", "/v3/api-docs*/**").permitAll()
-        			.requestMatchers("/api/auth/register").permitAll()
-        			.requestMatchers("/api/books").permitAll()
-        			.anyRequest().authenticated())
-        			.httpBasic(Customizer.withDefaults());
-                
-        return http.build();
-    }
-    
-    /**
-     * Configures the AuthenticationProvider.
-     * 
-     * @return the configured AuthenticationProvider
-     */
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(myUserDetailService);
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        return daoAuthenticationProvider;
-    }
-    
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.applyPermitDefaultValues();
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",configuration);
-        return source;
-    }
-    
-    /*
-     * In memory hardcoded authentication
-     */
-    /*@Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.withUsername("user")
-        		.password(passwordEncoder().encode("pass"))
-                .roles("SIMPLE_USER").build();
-        return new InMemoryUserDetailsManager(user);
-    }*/
-    /*@Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }*/
+	public SecurityConfig(MyUserDetailService myUserDetailService) {
+			this.myUserDetailService = myUserDetailService;
+	}
+
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.applyPermitDefaultValues();
+		configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**",configuration);
+		return source;
+	}
+
+	@Bean
+	public UserDetailsService userDetailService() {
+			return myUserDetailService;
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+			return new BCryptPasswordEncoder();
+	}
+	
+	/**
+	 * Configures the AuthenticationProvider.
+	 * 
+	 * @return the configured AuthenticationProvider
+	 */
+	@Bean
+	public AuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		daoAuthenticationProvider.setUserDetailsService(myUserDetailService);
+		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+		return daoAuthenticationProvider;
+	}
+			
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		
+		http
+		.csrf().disable()
+		.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+		.authorizeHttpRequests((authz) -> authz
+			.requestMatchers("/swagger-ui/**", "/v3/api-docs*/**").permitAll()
+			.requestMatchers("/api/auth/register").permitAll()
+			.requestMatchers("/api/books").permitAll()
+			.anyRequest().authenticated())
+			.httpBasic(Customizer.withDefaults());
+						
+		return http.build();
+	}
+	
+	/*
+		* In memory hardcoded authentication
+		*/
+	/*@Bean
+	public InMemoryUserDetailsManager userDetailsService() {
+			UserDetails user = User.withUsername("user")
+					.password(passwordEncoder().encode("pass"))
+							.roles("SIMPLE_USER").build();
+			return new InMemoryUserDetailsManager(user);
+	}*/
+	/*@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+			return authenticationConfiguration.getAuthenticationManager();
+	}*/
 }
